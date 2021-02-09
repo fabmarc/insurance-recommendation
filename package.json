@@ -1,0 +1,38 @@
+{
+  "name": "insurance-recommendation",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.9",
+    "axios": "^0.21.1",
+    "axios-mock-adapter": "^1.19.0",
+    "lodash": "^4.17.11",
+    "prop-types": "^15.6.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.2",
+    "styled-components": "^4.4.1",
+    "yup": "^0.32.8"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.12.13",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.6.3",
+    "customize-cra": "^1.0.0",
+    "react-app-rewired": "^2.1.8"
+  }
+}

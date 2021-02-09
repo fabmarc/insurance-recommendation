@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "code": "firstName",
+    "label": "What is your first name?"
+  },
+  {
+    "id": 2,
+    "code": "address",
+    "label": "What is your address?"
+  },
+  {
+    "id": 3,
+    "code": "occupation",
+    "label": "What is your occupation?",
+    "answerOptions": [
+      {
+        "value": "EMPLOYED",
+        "label": "Employed"
+      },
+      {
+        "value": "SELF_EMPLOYED",
+        "label": "Self-employed"
+      },
+      {
+        "value": "STUDENT",
+        "label": "Student"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "code": "haveChildren",
+    "label": "Do you have any children?",
+    "answerOptions": [
+      {
+        "value": true,
+        "label": "Yes"
+      },
+      {
+        "value": false,
+        "label": "No",
+        "nextQuestion": "email"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "code": "numberOfChildren",
+    "label": "How many children do you have?"
+  },
+  {
+    "id": 6,
+    "code": "email",
+    "label": "What is your email?"
+  }
+]
