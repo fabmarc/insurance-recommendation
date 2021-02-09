@@ -49,17 +49,17 @@ function Questionnaire(props) {
 
     const { validationSchema } = questionsConfig[currentQuestion.code];
     if (validationSchema) {
-      let awswerOption = {
+      const awswerOption = {
         value: !isBlank(currentAnswer?.answerValue)
           ? currentAnswer.answerValue
           : undefined
       };
       try {
-        awswerOption = await validationSchema.validate(awswerOption);
-        handleAnswerChange(currentQuestion.code, awswerOption);
+        currentAnswer.value = await validationSchema.validate(awswerOption);
+        handleAnswerChange(currentQuestion.code, currentAnswer);
       } catch (error) {
-        awswerOption.answerError = head(error.errors);
-        handleAnswerChange(currentQuestion.code, awswerOption);
+        currentAnswer.answerError = head(error.errors);
+        handleAnswerChange(currentQuestion.code, currentAnswer);
         return;
       }
     }
