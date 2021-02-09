@@ -55,7 +55,8 @@ function Questionnaire(props) {
           : undefined
       };
       try {
-        currentAnswer.value = await validationSchema.validate(awswerOption);
+        const validAnswer = await validationSchema.validate(awswerOption);
+        currentAnswer.value = validAnswer.value;
         handleAnswerChange(currentQuestion.code, currentAnswer);
       } catch (error) {
         currentAnswer.answerError = head(error.errors);
