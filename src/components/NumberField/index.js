@@ -18,18 +18,29 @@ const Error = styled.div`
   margin: 4px 0 0 2px;
   font-weight: 500;
   font-size: 0.7em;
-  color: #F00;
+  color: #f00;
 `;
 
 export default function NumberField(props) {
-  const { value: number, onChange, grouping, decimals, error, ...other } = props;
+  const {
+    value: number,
+    onChange,
+    grouping,
+    decimals,
+    error,
+    ...other
+  } = props;
 
   const [value, setValue] = useState(number || '');
 
-  useEffect(() => { setValue(number || ''); }, [number]);
+  useEffect(() => {
+    setValue(number || '');
+  }, [number]);
 
   function handleChange(event) {
-    const { target: { value } } = event;
+    const {
+      target: { value },
+    } = event;
     if (
       typeof onChange === 'function' &&
       checkNumberTyping(value, { locale, grouping, decimals })
@@ -41,11 +52,7 @@ export default function NumberField(props) {
 
   return (
     <Fragment>
-      <InputNumber
-        value={value}
-        onChange={handleChange}
-        {...other}
-      />
+      <InputNumber value={value} onChange={handleChange} {...other} />
       {error && <Error>{error}</Error>}
     </Fragment>
   );

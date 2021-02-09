@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from "react-router";
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { head, isEmpty } from 'lodash';
@@ -9,8 +9,7 @@ import Question from '../Question';
 
 import { Wrapper, Content, Body } from '..';
 
-const Footer = styled.div`
-`;
+const Footer = styled.div``;
 
 const Button = styled.button`
   padding: 8px 16px;
@@ -25,7 +24,7 @@ function Questionnaire(props) {
 
   const handleAnswerChange = (questionCode, answerOption) => {
     const { value: answerValue, answerError, nextQuestion } = answerOption;
-    setAnswers(prevAnswers => {
+    setAnswers((prevAnswers) => {
       const newAnswers = {
         ...prevAnswers,
         [questionCode]: {
@@ -39,7 +38,7 @@ function Questionnaire(props) {
       }
       return newAnswers;
     });
-  }
+  };
 
   const currentQuestion = questions?.[stepIndex];
   const currentAnswer = answers?.[currentQuestion?.code];
@@ -52,7 +51,7 @@ function Questionnaire(props) {
       const awswerOption = {
         value: !isBlank(currentAnswer?.answerValue)
           ? currentAnswer.answerValue
-          : undefined
+          : undefined,
       };
       try {
         const validAnswer = await validationSchema.validate(awswerOption);
@@ -69,7 +68,7 @@ function Questionnaire(props) {
       return;
     }
     setStepIndex(resolveNextStepIndex());
-  }
+  };
 
   function resolveNextQuestion() {
     const currentQuestion = questions[stepIndex];
@@ -80,9 +79,11 @@ function Questionnaire(props) {
 
   function resolveNextStepIndex() {
     let nextStepIndex = -1;
-    const nextQuestion = resolveNextQuestion()
-    if (nextQuestion) nextStepIndex =
-      questions.findIndex(question => question.code === nextQuestion)
+    const nextQuestion = resolveNextQuestion();
+    if (nextQuestion)
+      nextStepIndex = questions.findIndex(
+        (question) => question.code === nextQuestion,
+      );
     if (nextStepIndex === -1) nextStepIndex = stepIndex + 1;
     return nextStepIndex;
   }
@@ -91,13 +92,13 @@ function Questionnaire(props) {
     <Wrapper>
       <Content>
         <Body data-testid="questionnaire-body">
-          {!isEmpty(questions) &&
+          {!isEmpty(questions) && (
             <Question
               {...currentAnswer}
               {...currentQuestion}
               onAnswerChange={handleAnswerChange}
             />
-          }
+          )}
         </Body>
         <Footer>
           <Button

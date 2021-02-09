@@ -16,7 +16,7 @@ const Error = styled.div`
   margin: 4px 0 0 2px;
   font-weight: 500;
   font-size: 0.7em;
-  color: #F00;
+  color: #f00;
 `;
 
 export default function TextField(props) {
@@ -24,21 +24,21 @@ export default function TextField(props) {
 
   const [value, setValue] = useState(text || '');
 
-  useEffect(() => { setValue(text || ''); }, [text]);
+  useEffect(() => {
+    setValue(text || '');
+  }, [text]);
 
   function handleChange(event) {
-    const { target: { value } } = event;
+    const {
+      target: { value },
+    } = event;
     if (typeof onChange === 'function') onChange({ value });
     setValue(value);
   }
 
   return (
     <Fragment>
-      <InputText
-        value={value}
-        onChange={handleChange}
-        {...other}
-      />
+      <InputText value={value} onChange={handleChange} {...other} />
       {error && <Error>{error}</Error>}
     </Fragment>
   );

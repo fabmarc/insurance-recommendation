@@ -29,9 +29,9 @@ export function checkNumberTyping(
   const decimalsRegExp = `(\\${decimalSymbol}{${+!!decimals}}\\d{0,${decimals}})`;
   const groupingRegExp = `|([1-9]\\d{0,2}((\\${groupingSymbol}\\d{3})*\\${groupingSymbol}\\d{0,3}|(\\${groupingSymbol}\\d{3})*\\${groupingSymbol}\\d{3}${decimalsRegExp}))`;
   const regExp = new RegExp(
-    `^-?((0?${decimalsRegExp}?|[1-9]\\d*${decimalsRegExp}?)${(grouping &&
-      groupingRegExp) ||
-      ''})$`,
+    `^-?((0?${decimalsRegExp}?|[1-9]\\d*${decimalsRegExp}?)${
+      (grouping && groupingRegExp) || ''
+    })$`,
   );
   return regExp.test(value);
 }
@@ -39,7 +39,8 @@ export function checkNumberTyping(
 export function formatCurrency(number, currency = 'USD', locale = 'en') {
   if (
     (typeof number === 'string' && number.trim() !== '') ||
-    (number || number === 0)
+    number ||
+    number === 0
   )
     return (+number).toLocaleString(locale, {
       style: 'currency',

@@ -12,19 +12,17 @@ const Item = styled.li`
   margin: 0 0 8px;
 `;
 
-const Label = styled.label`
-`;
+const Label = styled.label``;
 
 const Radio = styled.input.attrs({
   type: 'radio',
-})`
-`;
+})``;
 
 const Error = styled.div`
   margin: 4px 0 0 2px;
   font-weight: 500;
   font-size: 0.7em;
-  color: #F00;
+  color: #f00;
 `;
 
 export default function RadioGroup(props) {
@@ -34,14 +32,18 @@ export default function RadioGroup(props) {
 
   const hashOptions = useRef();
 
-  useEffect(() => { setValue(data); }, [data]);
+  useEffect(() => {
+    setValue(data);
+  }, [data]);
 
   useEffect(() => {
     hashOptions.current = keyBy(options, 'value');
   }, [options]);
 
   function handleChange(event) {
-    let { target: { value: radioValue } } = event;
+    let {
+      target: { value: radioValue },
+    } = event;
     if (numeric) radioValue = toInt(radioValue);
     if (typeof onChange === 'function') {
       onChange(hashOptions.current[radioValue]);
@@ -52,7 +54,7 @@ export default function RadioGroup(props) {
   return (
     <Fragment>
       <List data-testid="radio-list">
-        {map(options, option => (
+        {map(options, (option) => (
           <Item key={option.value}>
             <Label>
               <Radio
@@ -61,8 +63,8 @@ export default function RadioGroup(props) {
                 onChange={handleChange}
                 checked={option.value === value}
               />
-                &nbsp;&nbsp;
-                {option.label}
+              &nbsp;&nbsp;
+              {option.label}
             </Label>
           </Item>
         ))}
@@ -75,11 +77,21 @@ export default function RadioGroup(props) {
 RadioGroup.propTypes = {
   numeric: PropTypes.bool,
   name: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.shape({
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
-    label: PropTypes.oneOfType([PropTypes.string]),
-  })),
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+        PropTypes.bool,
+      ]),
+      label: PropTypes.oneOfType([PropTypes.string]),
+    }),
+  ),
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.bool,
+  ]),
   onChange: PropTypes.func,
   error: PropTypes.string,
 };

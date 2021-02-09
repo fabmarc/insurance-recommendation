@@ -1,7 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
-import Survey from '..'
+import Survey from '..';
 
 jest.mock('../../../components/Questionnaire', () => ({
   __esModule: true,
@@ -14,4 +14,3 @@ it('should render title and questionnaire component', () => {
   expect(getByText('Please, answer some few questions...')).toBeInTheDocument();
   expect(getByText('Questionnaire')).toBeInTheDocument();
 });
-

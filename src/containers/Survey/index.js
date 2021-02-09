@@ -5,7 +5,6 @@ import { getAnswers, setAnswers } from '../../utils/surveyStorage';
 import { Root, Title } from '../../components';
 
 export default function Survey() {
-
   const answers = useRef(getAnswers()).current;
 
   return (
